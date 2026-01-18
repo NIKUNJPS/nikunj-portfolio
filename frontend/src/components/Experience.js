@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Calendar, MapPin, Briefcase } from 'lucide-react';
+
+const Experience = () => {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [visibleNodes, setVisibleNodes] = useState([]);
+  const sectionRef = useRef(null);
+  const nodeRefs = useRef([]);
 
 const Experience = () => {
   const experiences = [
