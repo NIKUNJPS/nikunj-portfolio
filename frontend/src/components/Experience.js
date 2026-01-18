@@ -96,7 +96,7 @@ const Experience = () => {
   }, []);
 
   return (
-    <section id="experience" style={{
+    <section ref={sectionRef} id="experience" style={{
       padding: '160px 7.6923%',
       background: 'var(--bg-primary)',
       position: 'relative',
@@ -113,29 +113,46 @@ const Experience = () => {
           </h2>
         </div>
 
-        {/* Timeline */}
+        {/* Timeline with Scroll Progress */}
         <div style={{ position: 'relative', marginTop: '60px' }}>
-          {/* Vertical Line */}
+          {/* Base Vertical Line */}
           <div style={{
             position: 'absolute',
             left: '0',
             top: '0',
             bottom: '0',
             width: '2px',
-            background: 'linear-gradient(to bottom, var(--brand-primary), transparent)',
+            background: 'rgba(255, 255, 255, 0.1)',
             zIndex: 0
+          }} />
+          
+          {/* Progress Line (fills based on scroll) */}
+          <div style={{
+            position: 'absolute',
+            left: '0',
+            top: '0',
+            width: '2px',
+            height: `${scrollProgress}%`,
+            background: 'linear-gradient(to bottom, var(--brand-primary), var(--brand-active))',
+            zIndex: 1,
+            transition: 'height 0.1s ease-out',
+            boxShadow: '0 0 10px rgba(0, 255, 209, 0.5)'
           }} />
 
           {experiences.map((exp, idx) => (
             <div
               key={idx}
+              ref={el => nodeRefs.current[idx] = el}
               style={{
                 position: 'relative',
                 paddingLeft: '60px',
-                paddingBottom: idx === experiences.length - 1 ? '0' : '80px'
+                paddingBottom: idx === experiences.length - 1 ? '0' : '80px',
+                opacity: visibleNodes.includes(idx) ? 1 : 0.3,
+                transform: visibleNodes.includes(idx) ? 'translateX(0)' : 'translateX(-20px)',
+                transition: 'all 0.6s ease-out'
               }}
             >
-              {/* Timeline Dot */}
+              {/* Timeline Dot with activation state */}
               <div style={{
                 position: 'absolute',
                 left: '-8px',
@@ -143,10 +160,15 @@ const Experience = () => {
                 width: '20px',
                 height: '20px',
                 borderRadius: '0',
-                background: exp.current ? 'var(--brand-primary)' : 'var(--bg-secondary)',
-                border: '2px solid var(--brand-primary)',
-                zIndex: 1,
-                boxShadow: exp.current ? '0 0 20px rgba(0, 255, 209, 0.5)' : 'none'
+                background: visibleNodes.includes(idx) 
+                  ? (exp.current ? 'var(--brand-primary)' : 'var(--brand-active)') 
+                  : 'var(--bg-secondary)',
+                border: `2px solid ${visibleNodes.includes(idx) ? 'var(--brand-primary)' : 'rgba(255, 255, 255, 0.2)'}`,
+                zIndex: 2,
+                boxShadow: visibleNodes.includes(idx) && exp.current 
+                  ? '0 0 20px rgba(0, 255, 209, 0.5)' 
+                  : 'none',
+                transition: 'all 0.4s ease-out'
               }} />
 
               {/* Content Card */}
