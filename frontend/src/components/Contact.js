@@ -14,7 +14,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Mock submission for now
-    setStatus('Message sent successfully! (Mock - Backend integration pending)');
+    setStatus('Message sent successfully! (Mock — backend integration pending)');
     setTimeout(() => setStatus(''), 3000);
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
@@ -27,202 +27,254 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" style={{
-      padding: '160px 7.6923%',
-      background: 'var(--bg-primary)',
-      position: 'relative',
-      zIndex: 1
-    }}>
+    <section
+      id="contact"
+      style={{
+        padding: '160px 7.6923%',
+        background: 'var(--bg-primary)',
+        position: 'relative',
+        zIndex: 1
+      }}
+    >
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        {/* Heading */}
         <div style={{ marginBottom: '60px', textAlign: 'center' }}>
-          <div className="body-medium" style={{ color: 'var(--brand-primary)', marginBottom: '16px' }}>
+          <div
+            className="body-medium"
+            style={{ color: 'var(--brand-primary)', marginBottom: '16px' }}
+          >
             Get In Touch
           </div>
+
           <h2 className="display-large" style={{ marginBottom: '24px' }}>
             Let’s Build Intelligent Systems{' '}
             <span style={{ color: 'var(--brand-primary)' }}>That Matter</span>
           </h2>
-          <p className="body-large" style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto' }}>
-            Available for full-time opportunities, consulting projects, and collaborations on AI-driven systems.
+
+          <p
+            className="body-large"
+            style={{
+              color: 'var(--text-secondary)',
+              maxWidth: '700px',
+              margin: '0 auto'
+            }}
+          >
+            Open to full-time roles, consulting opportunities, and collaborations
+            focused on AI, machine learning, backend systems, and scalable
+            full-stack applications.
           </p>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '60px',
-          marginTop: '60px'
-        }}>
+        {/* Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '60px',
+            marginTop: '60px'
+          }}
+        >
           {/* Contact Info */}
           <div>
-            <h3 className="heading-1" style={{ marginBottom: '32px' }}>Contact Information</h3>
-            
+            <h3 className="heading-1" style={{ marginBottom: '32px' }}>
+              Contact Information
+            </h3>
+
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <a href="mailto:nikunj@example.com" style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px',
-                padding: '20px',
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid var(--border-subtle)',
-                textDecoration: 'none',
-                transition: 'all 0.4s ease-in-out'
-              }} className="dark-hover">
+              {/* Email */}
+              <a
+                href="mailto:niks.shah236@gmail.com"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '16px',
+                  padding: '20px',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  border: '1px solid var(--border-subtle)',
+                  textDecoration: 'none',
+                  transition: 'all 0.4s ease-in-out'
+                }}
+                className="dark-hover"
+              >
                 <Mail size={24} style={{ color: 'var(--brand-primary)' }} />
                 <div>
-                  <div className="body-small" style={{ color: 'var(--text-muted)', marginBottom: '4px' }}>Email</div>
-                  <div className="body-medium" style={{ color: 'var(--text-primary)' }}>nikunj@example.com</div>
+                  <div
+                    className="body-small"
+                    style={{ color: 'var(--text-muted)', marginBottom: '4px' }}
+                  >
+                    Email
+                  </div>
+                  <div className="body-medium" style={{ color: 'var(--text-primary)' }}>
+                    niks.shah236@gmail.com
+                  </div>
                 </div>
               </a>
 
-              <a href="https://linkedin.com/in/nikunjshah" target="_blank" rel="noopener noreferrer" style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px',
-                padding: '20px',
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid var(--border-subtle)',
-                textDecoration: 'none',
-                transition: 'all 0.4s ease-in-out'
-              }} className="dark-hover">
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/nikunj-shah"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '16px',
+                  padding: '20px',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  border: '1px solid var(--border-subtle)',
+                  textDecoration: 'none',
+                  transition: 'all 0.4s ease-in-out'
+                }}
+                className="dark-hover"
+              >
                 <Linkedin size={24} style={{ color: 'var(--brand-primary)' }} />
                 <div>
-                  <div className="body-small" style={{ color: 'var(--text-muted)', marginBottom: '4px' }}>LinkedIn</div>
-                  <div className="body-medium" style={{ color: 'var(--text-primary)' }}>/in/nikunjshah</div>
+                  <div
+                    className="body-small"
+                    style={{ color: 'var(--text-muted)', marginBottom: '4px' }}
+                  >
+                    LinkedIn
+                  </div>
+                  <div className="body-medium" style={{ color: 'var(--text-primary)' }}>
+                    /in/nikunj-shah
+                  </div>
                 </div>
               </a>
 
-              <a href="https://github.com/nikunjshah" target="_blank" rel="noopener noreferrer" style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px',
-                padding: '20px',
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid var(--border-subtle)',
-                textDecoration: 'none',
-                transition: 'all 0.4s ease-in-out'
-              }} className="dark-hover">
+              {/* GitHub */}
+              <a
+                href="https://github.com/NIKUNJPS"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '16px',
+                  padding: '20px',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  border: '1px solid var(--border-subtle)',
+                  textDecoration: 'none',
+                  transition: 'all 0.4s ease-in-out'
+                }}
+                className="dark-hover"
+              >
                 <Github size={24} style={{ color: 'var(--brand-primary)' }} />
                 <div>
-                  <div className="body-small" style={{ color: 'var(--text-muted)', marginBottom: '4px' }}>GitHub</div>
-                  <div className="body-medium" style={{ color: 'var(--text-primary)' }}>/nikunjshah</div>
+                  <div
+                    className="body-small"
+                    style={{ color: 'var(--text-muted)', marginBottom: '4px' }}
+                  >
+                    GitHub
+                  </div>
+                  <div className="body-medium" style={{ color: 'var(--text-primary)' }}>
+                    /NIKUNJPS
+                  </div>
                 </div>
               </a>
 
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px',
-                padding: '20px',
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid var(--border-subtle)'
-              }}>
+              {/* Location */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '16px',
+                  padding: '20px',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  border: '1px solid var(--border-subtle)'
+                }}
+              >
                 <MapPin size={24} style={{ color: 'var(--brand-primary)' }} />
                 <div>
-                  <div className="body-small" style={{ color: 'var(--text-muted)', marginBottom: '4px' }}>Location</div>
-                  <div className="body-medium" style={{ color: 'var(--text-primary)' }}>Nashik, Maharashtra, India</div>
-                  <div className="body-small" style={{ color: 'var(--text-muted)' }}>IST (UTC +5:30)</div>
+                  <div
+                    className="body-small"
+                    style={{ color: 'var(--text-muted)', marginBottom: '4px' }}
+                  >
+                    Location
+                  </div>
+                  <div className="body-medium" style={{ color: 'var(--text-primary)' }}>
+                    Nashik, Maharashtra, India
+                  </div>
+                  <div className="body-small" style={{ color: 'var(--text-muted)' }}>
+                    IST (UTC +5:30)
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div style={{
-              marginTop: '40px',
-              padding: '24px',
-              background: 'rgba(0, 255, 209, 0.05)',
-              border: '1px solid rgba(0, 255, 209, 0.2)'
-            }}>
+            {/* Availability */}
+            <div
+              style={{
+                marginTop: '40px',
+                padding: '24px',
+                background: 'rgba(255, 255, 255, 0.03)',
+                border: '1px solid var(--border-subtle)'
+              }}
+            >
               <p className="body-medium" style={{ color: 'var(--text-secondary)' }}>
-                <strong style={{ color: 'var(--brand-primary)' }}>Open to:</strong> Full-time roles, contract work, and technical collaborations in AI/ML, backend systems, and full-stack development.
+                <strong style={{ color: 'var(--brand-primary)' }}>Open to:</strong>{' '}
+                Full-time roles, AI/ML engineering positions, backend systems,
+                automation projects, and meaningful technical collaborations.
               </p>
             </div>
           </div>
 
           {/* Contact Form */}
           <div>
-            <h3 className="heading-1" style={{ marginBottom: '32px' }}>Send a Message</h3>
-            
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <div>
-                <label className="body-medium" style={{ display: 'block', marginBottom: '8px', color: 'var(--text-secondary)' }}>
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  style={{
-                    width: '100%',
-                    padding: '16px',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid var(--border-subtle)',
-                    borderRadius: '0',
-                    color: 'var(--text-primary)',
-                    fontSize: '16px',
-                    fontFamily: 'inherit',
-                    transition: 'all 0.3s ease'
-                  }}
-                  onFocus={(e) => e.target.style.border = '1px solid var(--brand-primary)'}
-                  onBlur={(e) => e.target.style.border = '1px solid var(--border-subtle)'}
-                />
-              </div>
+            <h3 className="heading-1" style={{ marginBottom: '32px' }}>
+              Send a Message
+            </h3>
+
+            <form
+              onSubmit={handleSubmit}
+              style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}
+            >
+              {['name', 'email', 'subject'].map((field) => (
+                <div key={field}>
+                  <label
+                    className="body-medium"
+                    style={{
+                      display: 'block',
+                      marginBottom: '8px',
+                      color: 'var(--text-secondary)'
+                    }}
+                  >
+                    {field.charAt(0).toUpperCase() + field.slice(1)}
+                  </label>
+                  <input
+                    type={field === 'email' ? 'email' : 'text'}
+                    name={field}
+                    value={formData[field]}
+                    onChange={handleChange}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '16px',
+                      background: 'rgba(255, 255, 255, 0.05)',
+                      border: '1px solid var(--border-subtle)',
+                      color: 'var(--text-primary)',
+                      fontSize: '16px',
+                      fontFamily: 'inherit',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onFocus={(e) =>
+                      (e.target.style.border = '1px solid var(--brand-primary)')
+                    }
+                    onBlur={(e) =>
+                      (e.target.style.border = '1px solid var(--border-subtle)')
+                    }
+                  />
+                </div>
+              ))}
 
               <div>
-                <label className="body-medium" style={{ display: 'block', marginBottom: '8px', color: 'var(--text-secondary)' }}>
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
+                <label
+                  className="body-medium"
                   style={{
-                    width: '100%',
-                    padding: '16px',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid var(--border-subtle)',
-                    borderRadius: '0',
-                    color: 'var(--text-primary)',
-                    fontSize: '16px',
-                    fontFamily: 'inherit',
-                    transition: 'all 0.3s ease'
+                    display: 'block',
+                    marginBottom: '8px',
+                    color: 'var(--text-secondary)'
                   }}
-                  onFocus={(e) => e.target.style.border = '1px solid var(--brand-primary)'}
-                  onBlur={(e) => e.target.style.border = '1px solid var(--border-subtle)'}
-                />
-              </div>
-
-              <div>
-                <label className="body-medium" style={{ display: 'block', marginBottom: '8px', color: 'var(--text-secondary)' }}>
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  style={{
-                    width: '100%',
-                    padding: '16px',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid var(--border-subtle)',
-                    borderRadius: '0',
-                    color: 'var(--text-primary)',
-                    fontSize: '16px',
-                    fontFamily: 'inherit',
-                    transition: 'all 0.3s ease'
-                  }}
-                  onFocus={(e) => e.target.style.border = '1px solid var(--brand-primary)'}
-                  onBlur={(e) => e.target.style.border = '1px solid var(--border-subtle)'}
-                />
-              </div>
-
-              <div>
-                <label className="body-medium" style={{ display: 'block', marginBottom: '8px', color: 'var(--text-secondary)' }}>
+                >
                   Message
                 </label>
                 <textarea
@@ -236,15 +288,18 @@ const Contact = () => {
                     padding: '16px',
                     background: 'rgba(255, 255, 255, 0.05)',
                     border: '1px solid var(--border-subtle)',
-                    borderRadius: '0',
                     color: 'var(--text-primary)',
                     fontSize: '16px',
                     fontFamily: 'inherit',
                     transition: 'all 0.3s ease',
                     resize: 'vertical'
                   }}
-                  onFocus={(e) => e.target.style.border = '1px solid var(--brand-primary)'}
-                  onBlur={(e) => e.target.style.border = '1px solid var(--border-subtle)'}
+                  onFocus={(e) =>
+                    (e.target.style.border = '1px solid var(--brand-primary)')
+                  }
+                  onBlur={(e) =>
+                    (e.target.style.border = '1px solid var(--border-subtle)')
+                  }
                 />
               </div>
 
@@ -253,13 +308,15 @@ const Contact = () => {
               </button>
 
               {status && (
-                <div style={{
-                  padding: '16px',
-                  background: 'rgba(0, 255, 209, 0.1)',
-                  border: '1px solid rgba(0, 255, 209, 0.3)',
-                  color: 'var(--brand-primary)',
-                  textAlign: 'center'
-                }}>
+                <div
+                  style={{
+                    padding: '16px',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid var(--border-subtle)',
+                    color: 'var(--brand-primary)',
+                    textAlign: 'center'
+                  }}
+                >
                   {status}
                 </div>
               )}
@@ -267,21 +324,39 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Footer with Intelligence Moment */}
-        <div style={{
-          marginTop: '100px',
-          paddingTop: '60px',
-          borderTop: '1px solid var(--border-subtle)',
-          textAlign: 'center'
-        }}>
-          <p className="body-large" style={{ color: 'var(--text-secondary)', marginBottom: '24px' }}>
-            "When someone visits, they should feel: <em style={{ color: 'var(--brand-primary)' }}>This person understands systems, not just code.</em>"
+        {/* Footer */}
+        <div
+          style={{
+            marginTop: '100px',
+            paddingTop: '60px',
+            borderTop: '1px solid var(--border-subtle)',
+            textAlign: 'center'
+          }}
+        >
+          <p
+            className="body-large"
+            style={{ color: 'var(--text-secondary)', marginBottom: '24px' }}
+          >
+            "When someone visits, they should feel:{' '}
+            <em style={{ color: 'var(--brand-primary)' }}>
+              This person understands systems, not just code.
+            </em>
+            "
           </p>
-          <div className="body-small" style={{ color: 'var(--text-muted)', marginBottom: '12px', letterSpacing: '0.05em' }}>
+
+          <div
+            className="body-small"
+            style={{
+              color: 'var(--text-muted)',
+              marginBottom: '12px',
+              letterSpacing: '0.05em'
+            }}
+          >
             END OF SIGNAL · REACH OUT TO CONTINUE
           </div>
+
           <p className="body-small" style={{ color: 'var(--text-muted)' }}>
-            © 2025 Nikunj Shah. Built with intelligence, not templates.
+            © 2025 Nikunj Shah. Built with intelligence.
           </p>
         </div>
       </div>
