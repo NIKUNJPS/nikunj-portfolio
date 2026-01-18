@@ -62,7 +62,7 @@ const Hero = () => {
   };
 
   return (
-    <section style={{
+    <section ref={heroRef} style={{
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
@@ -71,6 +71,35 @@ const Hero = () => {
       position: 'relative',
       overflow: 'hidden'
     }}>
+      {/* Phase 1: Background grid with parallax */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 1px, transparent 1px, transparent 7.6923%), repeating-linear-gradient(-90deg, #fff, #fff 1px, transparent 1px, transparent 7.6923%)',
+        backgroundSize: '100% 100%',
+        opacity: phase >= 0 ? 0.08 : 0,
+        transform: `translateY(${mousePos.y * -0.03}px)`,
+        transition: 'opacity 0.8s ease-out, transform 0.1s ease-out',
+        pointerEvents: 'none',
+        zIndex: 0
+      }} />
+
+      {/* Quiet Intelligence: System Status */}
+      <div style={{
+        position: 'absolute',
+        top: '100px',
+        left: '7.6923%',
+        opacity: phase >= 1 ? 0.5 : 0,
+        transition: 'opacity 0.6s ease-out 0.3s'
+      }}>
+        <div className="body-small" style={{ color: 'var(--text-muted)', letterSpacing: '0.05em' }}>
+          SYSTEM ONLINE · EXPLORING PROFILE
+        </div>
+      </div>
+
       <div style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
@@ -79,23 +108,76 @@ const Hero = () => {
         width: '100%',
         alignItems: 'center'
       }}>
-        {/* Left Side - Content */}
+        {/* Left Side - Content with phased animations */}
         <div style={{ zIndex: 2 }}>
           <div style={{ marginBottom: '24px' }}>
-            <div className="body-medium" style={{ color: 'var(--brand-primary)', marginBottom: '16px' }}>
+            {/* Phase 2: Subtitle appears */}
+            <div 
+              className="body-medium" 
+              style={{ 
+                color: 'var(--brand-primary)', 
+                marginBottom: '16px',
+                opacity: phase >= 2 ? 1 : 0,
+                transform: phase >= 2 ? 'translateY(0)' : 'translateY(10px)',
+                transition: 'all 0.6s ease-out'
+              }}
+            >
               AI Engineer & Full-Stack Developer
             </div>
+            
+            {/* Phase 2: Headline with line-by-line reveal */}
             <h1 className="display-huge" style={{ marginBottom: '24px' }}>
-              Building Intelligent Systems,{' '}
-              <span style={{ color: 'var(--brand-primary)' }}>Not Just Software</span>
+              <span style={{
+                display: 'inline-block',
+                opacity: phase >= 2 ? 1 : 0,
+                transform: phase >= 2 ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'all 0.7s ease-out'
+              }}>
+                Building Intelligent Systems,{' '}
+              </span>
+              <span style={{ 
+                color: 'var(--brand-primary)',
+                display: 'inline-block',
+                opacity: phase >= 2 ? 1 : 0,
+                transform: phase >= 2 ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'all 0.7s ease-out 0.2s',
+                textShadow: `0 0 ${Math.min(100 / (Math.hypot(mousePos.x - window.innerWidth/4, mousePos.y - window.innerHeight/2) / 10), 20)}px rgba(0, 255, 209, 0.6)`
+              }}>
+                Not Just Software
+              </span>
             </h1>
-            <p className="body-large" style={{ color: 'var(--text-secondary)', maxWidth: '600px' }}>
+            
+            <p 
+              className="body-large" 
+              style={{ 
+                color: 'var(--text-secondary)', 
+                maxWidth: '600px',
+                opacity: phase >= 2 ? 1 : 0,
+                transform: phase >= 2 ? 'translateY(0)' : 'translateY(10px)',
+                transition: 'all 0.6s ease-out 0.4s'
+              }}
+            >
               Focused on AI-driven automation, scalable backend applications, and intelligent data systems that solve real problems.
             </p>
           </div>
 
-          <div style={{ display: 'flex', gap: '20px', marginTop: '40px', flexWrap: 'wrap' }}>
-            <button onClick={scrollToProjects} className="btn-primary">
+          {/* Phase 3: CTAs with micro-glow */}
+          <div style={{ 
+            display: 'flex', 
+            gap: '20px', 
+            marginTop: '40px', 
+            flexWrap: 'wrap',
+            opacity: phase >= 3 ? 1 : 0,
+            transform: phase >= 3 ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'all 0.6s ease-out 0.2s'
+          }}>
+            <button 
+              onClick={scrollToProjects} 
+              className="btn-primary"
+              style={{
+                boxShadow: `0 0 ${Math.min(100 / (Math.hypot(mousePos.x - 300, mousePos.y - 500) / 10), 30)}px rgba(0, 255, 209, 0.4)`
+              }}
+            >
               View Work <ArrowRight size={20} />
             </button>
             <button className="btn-secondary">
@@ -106,7 +188,13 @@ const Hero = () => {
             </button>
           </div>
 
-          <div style={{ marginTop: '60px', display: 'flex', gap: '40px' }}>
+          <div style={{ 
+            marginTop: '60px', 
+            display: 'flex', 
+            gap: '40px',
+            opacity: phase >= 3 ? 1 : 0,
+            transition: 'opacity 0.6s ease-out 0.4s'
+          }}>
             <div>
               <div className="heading-2" style={{ color: 'var(--brand-primary)' }}>3+</div>
               <div className="body-small" style={{ color: 'var(--text-muted)' }}>Projects Deployed</div>
@@ -122,16 +210,22 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Side - Spline Integration */}
-        <div style={{
-          width: '700px',
-          height: '700px',
-          overflow: 'visible',
-          position: 'relative',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
+        {/* Right Side - Contextual Spline */}
+        <div 
+          ref={splineRef}
+          style={{
+            width: '700px',
+            height: '700px',
+            overflow: 'visible',
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            opacity: splineOpacity,
+            filter: phase >= 1 ? 'blur(0px)' : 'blur(20px)',
+            transition: 'opacity 0.8s ease-out, filter 0.8s ease-out'
+          }}
+        >
           <Suspense fallback={
             <div style={{
               width: '100%',
@@ -159,7 +253,9 @@ const Hero = () => {
         bottom: '40px',
         left: '50%',
         transform: 'translateX(-50%)',
-        animation: 'bounce 2s infinite'
+        animation: 'bounce 2s infinite',
+        opacity: phase >= 3 ? 0.7 : 0,
+        transition: 'opacity 0.6s ease-out'
       }}>
         <div style={{
           width: '2px',
@@ -179,12 +275,18 @@ const Hero = () => {
           50% { opacity: 1; }
         }
         @media (max-width: 1200px) {
-          section > div {
+          section > div:nth-child(3) {
             grid-template-columns: 1fr !important;
             text-align: center;
           }
-          section > div > div:last-child {
+          section > div:nth-child(3) > div:last-child {
             display: none !important;
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
           }
         }
       `}</style>
