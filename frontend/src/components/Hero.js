@@ -160,89 +160,55 @@ const Hero = () => {
             </p>
           </div>
 
-        {/* Phase 3: CTAs with micro-glow */}
-        <div
-          style={{
-            display: 'flex',
-            gap: '20px',
-            marginTop: '40px',
+          {/* Phase 3: CTAs with micro-glow */}
+          <div style={{ 
+            display: 'flex', 
+            gap: '20px', 
+            marginTop: '40px', 
             flexWrap: 'wrap',
             opacity: phase >= 3 ? 1 : 0,
             transform: phase >= 3 ? 'translateY(0)' : 'translateY(20px)',
             transition: 'all 0.6s ease-out 0.2s'
-          }}
-        >
-          {/* View Work */}
-          <button
-            onClick={scrollToProjects}
-            className="btn-primary"
-            style={{
-              boxShadow: `0 0 ${Math.min(
-                100 / (Math.hypot(mousePos.x - 300, mousePos.y - 500) / 10),
-                30
-              )}px rgba(0, 255, 209, 0.4)`
-            }}
-          >
-            View Work <ArrowRight size={20} />
-          </button>
+          }}>
+            <button 
+              onClick={scrollToProjects} 
+              className="btn-primary"
+              style={{
+                boxShadow: `0 0 ${Math.min(100 / (Math.hypot(mousePos.x - 300, mousePos.y - 500) / 10), 30)}px rgba(0, 255, 209, 0.4)`
+              }}
+            >
+              View Work <ArrowRight size={20} />
+            </button>
+            <button className="btn-secondary">
+              <Download size={20} /> Download Resume
+            </button>
+            <button onClick={scrollToContact} className="btn-secondary">
+              <Mail size={20} /> Contact
+            </button>
+          </div>
 
-          {/* Download Resume (PROPER WAY) */}
-          <a
-            href="/Nikunj_Resume.pdf"
-            download="Nikunj_Shah_Resume.pdf"
-            className="btn-secondary"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px'
-            }}
-          >
-            <Download size={20} /> Download Resume
-          </a>
-
-          {/* Contact */}
-          <button onClick={scrollToContact} className="btn-secondary">
-            <Mail size={20} /> Contact
-          </button>
-        </div>
-
-        {/* Stats */}
-        <div
-          style={{
-            marginTop: '60px',
-            display: 'flex',
+          <div style={{ 
+            marginTop: '60px', 
+            display: 'flex', 
             gap: '40px',
             opacity: phase >= 3 ? 1 : 0,
             transition: 'opacity 0.6s ease-out 0.4s'
-          }}
-        >
-          <div>
-            <div className="heading-2" style={{ color: 'var(--brand-primary)' }}>
-              3+
+          }}>
+            <div>
+              <div className="heading-2" style={{ color: 'var(--brand-primary)' }}>3+</div>
+              <div className="body-small" style={{ color: 'var(--text-muted)' }}>Projects Deployed</div>
             </div>
-            <div className="body-small" style={{ color: 'var(--text-muted)' }}>
-              Projects Deployed
+            <div>
+              <div className="heading-2" style={{ color: 'var(--brand-primary)' }}>2+</div>
+              <div className="body-small" style={{ color: 'var(--text-muted)' }}>Years Experience</div>
             </div>
-          </div>
-
-          <div>
-            <div className="heading-2" style={{ color: 'var(--brand-primary)' }}>
-              2+
-            </div>
-            <div className="body-small" style={{ color: 'var(--text-muted)' }}>
-              Years Experience
-            </div>
-          </div>
-
-          <div>
-            <div className="heading-2" style={{ color: 'var(--brand-primary)' }}>
-              NASA
-            </div>
-            <div className="body-small" style={{ color: 'var(--text-muted)' }}>
-              Challenge Contributor
+            <div>
+              <div className="heading-2" style={{ color: 'var(--brand-primary)' }}>NASA</div>
+              <div className="body-small" style={{ color: 'var(--text-muted)' }}>Challenge Contributor</div>
             </div>
           </div>
         </div>
+
         {/* Right Side - Contextual Spline */}
         <div 
           ref={splineRef}
