@@ -89,22 +89,40 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" style={{
+    <section ref={sectionRef} id="skills" style={{
       padding: '160px 7.6923%',
       background: 'var(--bg-primary)',
       position: 'relative',
       zIndex: 1
     }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        {/* Section Header with Intelligence Moment */}
         <div style={{ marginBottom: '60px' }}>
-          <div className="body-medium" style={{ color: 'var(--brand-primary)', marginBottom: '16px' }}>
-            Technical Expertise
+          <div 
+            className="body-medium" 
+            style={{ 
+              color: 'var(--brand-primary)', 
+              marginBottom: '16px',
+              opacity: hasAnimated ? 1 : 0,
+              transform: hasAnimated ? 'translateY(0)' : 'translateY(10px)',
+              transition: 'all 0.6s ease-out'
+            }}
+          >
+            CONTEXT LOADED · Technical Expertise
           </div>
-          <h2 className="display-large">
+          <h2 
+            className="display-large"
+            style={{
+              opacity: hasAnimated ? 1 : 0,
+              transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'all 0.7s ease-out 0.2s'
+            }}
+          >
             Full-Stack Intelligence
           </h2>
         </div>
 
+        {/* Capability Matrix with Focus Logic */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
@@ -114,16 +132,26 @@ const Skills = () => {
           {skillsData.map((category, idx) => (
             <div
               key={idx}
+              onMouseEnter={() => setHoveredCard(idx)}
+              onMouseLeave={() => setHoveredCard(null)}
               style={{
                 padding: '40px',
                 background: 'rgba(255, 255, 255, 0.03)',
                 border: '1px solid var(--border-subtle)',
-                transition: 'all 0.4s ease-in-out'
+                transition: 'all 0.4s ease-in-out',
+                opacity: hoveredCard !== null && hoveredCard !== idx ? 0.4 : 1,
+                transform: hoveredCard === idx ? 'translateY(-4px)' : 'translateY(0)',
+                boxShadow: hoveredCard === idx ? '0 8px 32px rgba(0, 255, 209, 0.2)' : 'none'
               }}
-              className="dark-hover"
             >
               <div style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ color: 'var(--brand-primary)' }}>{category.icon}</div>
+                <div style={{ 
+                  color: 'var(--brand-primary)',
+                  transition: 'transform 0.3s ease',
+                  transform: hoveredCard === idx ? 'scale(1.1)' : 'scale(1)'
+                }}>
+                  {category.icon}
+                </div>
                 <h3 className="heading-2">{category.category}</h3>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
