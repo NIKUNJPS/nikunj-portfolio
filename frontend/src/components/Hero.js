@@ -179,9 +179,19 @@ const Hero = () => {
             >
               View Work <ArrowRight size={20} />
             </button>
-            <button className="btn-secondary">
-              <Download size={20} /> Download Resume
-            </button>
+              <a
+  href="/Nikunj_Resume.pdf"
+  download
+  className="btn-secondary"
+  style={{
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    textDecoration: 'none'
+  }}
+>
+  <Download size={20} /> Download Resume
+</a>
             <button onClick={scrollToContact} className="btn-secondary">
               <Mail size={20} /> Contact
             </button>
