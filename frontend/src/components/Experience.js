@@ -7,12 +7,6 @@ const Experience = () => {
   const sectionRef = useRef(null);
   const nodeRefs = useRef([]);
 
-const Experience = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [visibleNodes, setVisibleNodes] = useState([]);
-  const sectionRef = useRef(null);
-  const nodeRefs = useRef([]);
-
   const experiences = [
     {
       role: 'Full Stack Developer Intern',
@@ -179,76 +173,6 @@ const Experience = () => {
                 transition: 'all 0.4s ease-in-out'
               }} className="dark-hover">
                 {exp.current && (
-                  <div style={{
-                    display: 'inline-block',
-                    padding: '6px 16px',
-                    background: 'var(--brand-primary)',
-                    color: '#000000',
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    marginBottom: '20px',
-                    borderRadius: '0'
-                  }}>
-                    CURRENT
-                  </div>
-                )}
-
-                <h3 className="heading-1" style={{ marginBottom: '12px' }}>
-                  {exp.role}
-                </h3>
-
-                <div style={{
-                  display: 'flex',
-                  gap: '24px',
-                  marginBottom: '24px',
-                  flexWrap: 'wrap'
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Briefcase size={18} style={{ color: 'var(--brand-primary)' }} />
-                    <span className="body-medium" style={{ color: 'var(--text-secondary)' }}>
-                      {exp.company}
-                    </span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Calendar size={18} style={{ color: 'var(--brand-primary)' }} />
-                    <span className="body-medium" style={{ color: 'var(--text-secondary)' }}>
-                      {exp.duration}
-                    </span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <MapPin size={18} style={{ color: 'var(--brand-primary)' }} />
-                    <span className="body-medium" style={{ color: 'var(--text-secondary)' }}>
-                      {exp.location}
-                    </span>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {exp.responsibilities.map((resp, respIdx) => (
-                    <div key={respIdx} style={{ display: 'flex', gap: '12px' }}>
-                      <div style={{
-                        minWidth: '6px',
-                        height: '6px',
-                        background: 'var(--brand-primary)',
-                        marginTop: '8px',
-                        flexShrink: 0
-                      }} />
-                      <p className="body-medium" style={{ color: 'var(--text-secondary)' }}>
-                        {resp}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default Experience;
                   <div style={{
                     display: 'inline-block',
                     padding: '6px 16px',
