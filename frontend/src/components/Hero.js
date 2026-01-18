@@ -96,7 +96,6 @@ const Hero = () => {
         transition: 'opacity 0.6s ease-out 0.3s'
       }}>
         <div className="body-small" style={{ color: 'var(--text-muted)', letterSpacing: '0.05em' }}>
-          SYSTEM ONLINE · EXPLORING PROFILE
         </div>
       </div>
 

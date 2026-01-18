@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 import { Mail, Linkedin, Github, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
@@ -10,19 +11,43 @@ const Contact = () => {
   });
 
   const [status, setStatus] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStatus('Message sent successfully! (Mock — backend integration pending)');
-    setTimeout(() => setStatus(''), 3000);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus('');
+
+    emailjs
+      .send(
+        'service_9fa0j1u',      
+        'template_l2sl01t',  
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        },
+        'fKyqSIy6l9wnYWeK-'       
+      )
+      .then(
+        () => {
+          setStatus('Message sent successfully! 🚀');
+          setFormData({ name: '', email: '', subject: '', message: '' });
+          setLoading(false);
+        },
+        () => {
+          setStatus('Something went wrong. Please try again.');
+          setLoading(false);
+        }
+      );
   };
 
   return (
@@ -83,26 +108,10 @@ const Contact = () => {
               <a
                 href="mailto:niks.shah236@gmail.com"
                 className="dark-hover"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '16px',
-                  padding: '20px',
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid var(--border-subtle)',
-                  textDecoration: 'none',
-                  transition: 'all 0.4s ease-in-out'
-                }}
+                style={contactCard}
               >
                 <Mail size={24} style={{ color: 'var(--brand-primary)' }} />
-                <div>
-                  <div className="body-small" style={{ color: 'var(--text-muted)' }}>
-                    Email
-                  </div>
-                  <div className="body-medium" style={{ color: 'var(--text-primary)' }}>
-                    niks.shah236@gmail.com
-                  </div>
-                </div>
+                <span>niks.shah236@gmail.com</span>
               </a>
 
               <a
@@ -110,26 +119,10 @@ const Contact = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="dark-hover"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '16px',
-                  padding: '20px',
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid var(--border-subtle)',
-                  textDecoration: 'none',
-                  transition: 'all 0.4s ease-in-out'
-                }}
+                style={contactCard}
               >
                 <Linkedin size={24} style={{ color: 'var(--brand-primary)' }} />
-                <div>
-                  <div className="body-small" style={{ color: 'var(--text-muted)' }}>
-                    LinkedIn
-                  </div>
-                  <div className="body-medium" style={{ color: 'var(--text-primary)' }}>
-                    /in/nikunj-shah
-                  </div>
-                </div>
+                <span>/in/nikunj-shah</span>
               </a>
 
               <a
@@ -137,50 +130,15 @@ const Contact = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="dark-hover"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '16px',
-                  padding: '20px',
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid var(--border-subtle)',
-                  textDecoration: 'none',
-                  transition: 'all 0.4s ease-in-out'
-                }}
+                style={contactCard}
               >
                 <Github size={24} style={{ color: 'var(--brand-primary)' }} />
-                <div>
-                  <div className="body-small" style={{ color: 'var(--text-muted)' }}>
-                    GitHub
-                  </div>
-                  <div className="body-medium" style={{ color: 'var(--text-primary)' }}>
-                    /NIKUNJPS
-                  </div>
-                </div>
+                <span>/NIKUNJPS</span>
               </a>
 
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '16px',
-                  padding: '20px',
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid var(--border-subtle)'
-                }}
-              >
+              <div style={contactCard}>
                 <MapPin size={24} style={{ color: 'var(--brand-primary)' }} />
-                <div>
-                  <div className="body-small" style={{ color: 'var(--text-muted)' }}>
-                    Location
-                  </div>
-                  <div className="body-medium" style={{ color: 'var(--text-primary)' }}>
-                    Nashik, Maharashtra, India
-                  </div>
-                  <div className="body-small" style={{ color: 'var(--text-muted)' }}>
-                    IST (UTC +5:30)
-                  </div>
-                </div>
+                <span>Nashik, Maharashtra, India (IST)</span>
               </div>
             </div>
           </div>
@@ -196,49 +154,30 @@ const Contact = () => {
               style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}
             >
               {['name', 'email', 'subject'].map((field) => (
-                <div key={field}>
-                  <label className="body-medium" style={{ color: 'var(--text-secondary)' }}>
-                    {field.charAt(0).toUpperCase() + field.slice(1)}
-                  </label>
-                  <input
-                    type={field === 'email' ? 'email' : 'text'}
-                    name={field}
-                    value={formData[field]}
-                    onChange={handleChange}
-                    required
-                    style={{
-                      width: '100%',
-                      padding: '16px',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid var(--border-subtle)',
-                      color: 'var(--text-primary)'
-                    }}
-                  />
-                </div>
+                <input
+                  key={field}
+                  type={field === 'email' ? 'email' : 'text'}
+                  name={field}
+                  value={formData[field]}
+                  onChange={handleChange}
+                  required
+                  placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                  style={inputStyle}
+                />
               ))}
 
-              <div>
-                <label className="body-medium" style={{ color: 'var(--text-secondary)' }}>
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={6}
-                  required
-                  style={{
-                    width: '100%',
-                    padding: '16px',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid var(--border-subtle)',
-                    color: 'var(--text-primary)'
-                  }}
-                />
-              </div>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={6}
+                required
+                placeholder="Message"
+                style={inputStyle}
+              />
 
-              <button type="submit" className="btn-primary">
-                Send Message <Send size={20} />
+              <button type="submit" className="btn-primary" disabled={loading}>
+                {loading ? 'Sending...' : <>Send Message <Send size={18} /></>}
               </button>
 
               {status && (
@@ -273,6 +212,27 @@ const Contact = () => {
       </div>
     </section>
   );
+};
+
+const contactCard = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '16px',
+  padding: '20px',
+  background: 'rgba(255,255,255,0.03)',
+  border: '1px solid var(--border-subtle)',
+  textDecoration: 'none',
+  color: 'var(--text-primary)',
+  transition: 'all 0.4s ease'
+};
+
+const inputStyle = {
+  width: '100%',
+  padding: '16px',
+  background: 'rgba(255,255,255,0.05)',
+  border: '1px solid var(--border-subtle)',
+  color: 'var(--text-primary)',
+  fontSize: '16px'
 };
 
 export default Contact;
