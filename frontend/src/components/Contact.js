@@ -13,7 +13,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Mock submission for now
     setStatus('Message sent successfully! (Mock — backend integration pending)');
     setTimeout(() => setStatus(''), 3000);
     setFormData({ name: '', email: '', subject: '', message: '' });
@@ -81,9 +80,9 @@ const Contact = () => {
             </h3>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              {/* Email */}
               <a
                 href="mailto:niks.shah236@gmail.com"
+                className="dark-hover"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -94,14 +93,10 @@ const Contact = () => {
                   textDecoration: 'none',
                   transition: 'all 0.4s ease-in-out'
                 }}
-                className="dark-hover"
               >
                 <Mail size={24} style={{ color: 'var(--brand-primary)' }} />
                 <div>
-                  <div
-                    className="body-small"
-                    style={{ color: 'var(--text-muted)', marginBottom: '4px' }}
-                  >
+                  <div className="body-small" style={{ color: 'var(--text-muted)' }}>
                     Email
                   </div>
                   <div className="body-medium" style={{ color: 'var(--text-primary)' }}>
@@ -110,11 +105,11 @@ const Contact = () => {
                 </div>
               </a>
 
-              {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/in/nikunj-shah"
+                href="https://www.linkedin.com/in/nikunj-shah-9b4130282/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="dark-hover"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -125,14 +120,10 @@ const Contact = () => {
                   textDecoration: 'none',
                   transition: 'all 0.4s ease-in-out'
                 }}
-                className="dark-hover"
               >
                 <Linkedin size={24} style={{ color: 'var(--brand-primary)' }} />
                 <div>
-                  <div
-                    className="body-small"
-                    style={{ color: 'var(--text-muted)', marginBottom: '4px' }}
-                  >
+                  <div className="body-small" style={{ color: 'var(--text-muted)' }}>
                     LinkedIn
                   </div>
                   <div className="body-medium" style={{ color: 'var(--text-primary)' }}>
@@ -141,11 +132,11 @@ const Contact = () => {
                 </div>
               </a>
 
-              {/* GitHub */}
               <a
                 href="https://github.com/NIKUNJPS"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="dark-hover"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -156,14 +147,10 @@ const Contact = () => {
                   textDecoration: 'none',
                   transition: 'all 0.4s ease-in-out'
                 }}
-                className="dark-hover"
               >
                 <Github size={24} style={{ color: 'var(--brand-primary)' }} />
                 <div>
-                  <div
-                    className="body-small"
-                    style={{ color: 'var(--text-muted)', marginBottom: '4px' }}
-                  >
+                  <div className="body-small" style={{ color: 'var(--text-muted)' }}>
                     GitHub
                   </div>
                   <div className="body-medium" style={{ color: 'var(--text-primary)' }}>
@@ -172,7 +159,6 @@ const Contact = () => {
                 </div>
               </a>
 
-              {/* Location */}
               <div
                 style={{
                   display: 'flex',
@@ -185,10 +171,7 @@ const Contact = () => {
               >
                 <MapPin size={24} style={{ color: 'var(--brand-primary)' }} />
                 <div>
-                  <div
-                    className="body-small"
-                    style={{ color: 'var(--text-muted)', marginBottom: '4px' }}
-                  >
+                  <div className="body-small" style={{ color: 'var(--text-muted)' }}>
                     Location
                   </div>
                   <div className="body-medium" style={{ color: 'var(--text-primary)' }}>
@@ -199,22 +182,6 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Availability */}
-            <div
-              style={{
-                marginTop: '40px',
-                padding: '24px',
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid var(--border-subtle)'
-              }}
-            >
-              <p className="body-medium" style={{ color: 'var(--text-secondary)' }}>
-                <strong style={{ color: 'var(--brand-primary)' }}>Open to:</strong>{' '}
-                Full-time roles, AI/ML engineering positions, backend systems,
-                automation projects, and meaningful technical collaborations.
-              </p>
             </div>
           </div>
 
@@ -230,14 +197,7 @@ const Contact = () => {
             >
               {['name', 'email', 'subject'].map((field) => (
                 <div key={field}>
-                  <label
-                    className="body-medium"
-                    style={{
-                      display: 'block',
-                      marginBottom: '8px',
-                      color: 'var(--text-secondary)'
-                    }}
-                  >
+                  <label className="body-medium" style={{ color: 'var(--text-secondary)' }}>
                     {field.charAt(0).toUpperCase() + field.slice(1)}
                   </label>
                   <input
@@ -251,59 +211,33 @@ const Contact = () => {
                       padding: '16px',
                       background: 'rgba(255, 255, 255, 0.05)',
                       border: '1px solid var(--border-subtle)',
-                      color: 'var(--text-primary)',
-                      fontSize: '16px',
-                      fontFamily: 'inherit',
-                      transition: 'all 0.3s ease'
+                      color: 'var(--text-primary)'
                     }}
-                    onFocus={(e) =>
-                      (e.target.style.border = '1px solid var(--brand-primary)')
-                    }
-                    onBlur={(e) =>
-                      (e.target.style.border = '1px solid var(--border-subtle)')
-                    }
                   />
                 </div>
               ))}
 
               <div>
-                <label
-                  className="body-medium"
-                  style={{
-                    display: 'block',
-                    marginBottom: '8px',
-                    color: 'var(--text-secondary)'
-                  }}
-                >
+                <label className="body-medium" style={{ color: 'var(--text-secondary)' }}>
                   Message
                 </label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  required
                   rows={6}
+                  required
                   style={{
                     width: '100%',
                     padding: '16px',
                     background: 'rgba(255, 255, 255, 0.05)',
                     border: '1px solid var(--border-subtle)',
-                    color: 'var(--text-primary)',
-                    fontSize: '16px',
-                    fontFamily: 'inherit',
-                    transition: 'all 0.3s ease',
-                    resize: 'vertical'
+                    color: 'var(--text-primary)'
                   }}
-                  onFocus={(e) =>
-                    (e.target.style.border = '1px solid var(--brand-primary)')
-                  }
-                  onBlur={(e) =>
-                    (e.target.style.border = '1px solid var(--border-subtle)')
-                  }
                 />
               </div>
 
-              <button type="submit" className="btn-primary" style={{ width: '100%' }}>
+              <button type="submit" className="btn-primary">
                 Send Message <Send size={20} />
               </button>
 
@@ -311,7 +245,6 @@ const Contact = () => {
                 <div
                   style={{
                     padding: '16px',
-                    background: 'rgba(255, 255, 255, 0.05)',
                     border: '1px solid var(--border-subtle)',
                     color: 'var(--brand-primary)',
                     textAlign: 'center'
@@ -333,47 +266,11 @@ const Contact = () => {
             textAlign: 'center'
           }}
         >
-          <p
-            className="body-large"
-            style={{ color: 'var(--text-secondary)', marginBottom: '24px' }}
-          >
-            "When someone visits, they should feel:{' '}
-            <em style={{ color: 'var(--brand-primary)' }}>
-              This person understands systems, not just code.
-            </em>
-            "
-          </p>
-
-          <div
-            className="body-small"
-            style={{
-              color: 'var(--text-muted)',
-              marginBottom: '12px',
-              letterSpacing: '0.05em'
-            }}
-          >
-            END OF SIGNAL · REACH OUT TO CONTINUE
-          </div>
-
           <p className="body-small" style={{ color: 'var(--text-muted)' }}>
             © 2025 Nikunj Shah. Built with intelligence.
           </p>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 1024px) {
-          #contact > div > div:nth-child(2) {
-            grid-template-columns: 1fr !important;
-          }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          * {
-            animation-duration: 0.01ms !important;
-            transition-duration: 0.01ms !important;
-          }
-        }
-      `}</style>
     </section>
   );
 };

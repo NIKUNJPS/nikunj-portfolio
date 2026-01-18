@@ -113,3 +113,72 @@ code {
         border-bottom-color: inherit;
     }
 }
+
+/* ===============================
+   HEADER LOGO – SYSTEM IDENTITY
+   =============================== */
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 4px;
+}
+
+/* Main logo size */
+.logo-image {
+  height: 44px;              /* ⬅ BIGGER & CONFIDENT */
+  width: auto;
+  opacity: 0.92;
+  transform-origin: center;
+  animation: systemBoot 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+             idlePulse 6s ease-in-out infinite;
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.6s ease,
+    filter 0.6s ease;
+}
+
+/* Slight shrink on scroll */
+.logo-scrolled {
+  height: 36px;
+  opacity: 0.85;
+}
+
+/* Hover interaction – premium & calm */
+.logo-wrapper:hover .logo-image {
+  transform: scale(1.03);
+  opacity: 1;
+  filter: drop-shadow(0 10px 30px rgba(0, 255, 200, 0.18));
+}
+
+/* System boot animation */
+@keyframes systemBoot {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(-2px);
+    filter: blur(6px);
+  }
+  40% {
+    opacity: 0.6;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 0.92;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Idle breathing animation */
+@keyframes idlePulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.015);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
