@@ -1,9 +1,46 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState, useEffect, useRef } from 'react';
 import { Download, ArrowRight, Mail } from 'lucide-react';
 
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
 const Hero = () => {
+  const [phase, setPhase] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [splineOpacity, setSplineOpacity] = useState(1);
+  const heroRef = useRef(null);
+  const splineRef = useRef(null);
+
+  // Phase sequencing: 0 → 1 → 2 → 3 (4 phases over 2 seconds)
+  useEffect(() => {
+    const timers = [
+      setTimeout(() => setPhase(1), 500),   // 0.5s
+      setTimeout(() => setPhase(2), 1200),  // 1.2s
+      setTimeout(() => setPhase(3), 2000)   // 2s
+    ];
+    return () => timers.forEach(clearTimeout);
+  }, []);
+
+  // Cursor proximity tracking
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Spline contextual behavior: dims when scrolling past hero
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!heroRef.current) return;
+      const heroBottom = heroRef.current.getBoundingClientRect().bottom;
+      const scrollPastHero = heroBottom < window.innerHeight * 0.3;
+      setSplineOpacity(scrollPastHero ? 0.3 : 1);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
