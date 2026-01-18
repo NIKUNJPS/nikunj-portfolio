@@ -1,5 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Brain, Server, Code, Database, Cloud, Terminal } from 'lucide-react';
+
+const Skills = () => {
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const sectionRef = useRef(null);
+
+  // Animate category headers only once on first reveal
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasAnimated]);
 
 const Skills = () => {
   const skillsData = [
