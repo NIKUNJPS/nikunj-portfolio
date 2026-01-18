@@ -8,6 +8,11 @@ const Experience = () => {
   const nodeRefs = useRef([]);
 
 const Experience = () => {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [visibleNodes, setVisibleNodes] = useState([]);
+  const sectionRef = useRef(null);
+  const nodeRefs = useRef([]);
+
   const experiences = [
     {
       role: 'Full Stack Developer Intern',
@@ -49,6 +54,46 @@ const Experience = () => {
       ]
     }
   ];
+
+  // Scroll-based progress tracking
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionHeight = rect.height;
+      const sectionTop = rect.top;
+      const windowHeight = window.innerHeight;
+      
+      if (sectionTop < windowHeight && sectionTop + sectionHeight > 0) {
+        const visible = Math.max(0, Math.min(windowHeight - sectionTop, sectionHeight));
+        const progress = (visible / sectionHeight) * 100;
+        setScrollProgress(Math.min(progress, 100));
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Node visibility tracking
+  useEffect(() => {
+    const observers = nodeRefs.current.map((node, idx) => {
+      if (!node) return null;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setVisibleNodes(prev => [...new Set([...prev, idx])]);
+          }
+        },
+        { threshold: 0.5 }
+      );
+      observer.observe(node);
+      return observer;
+    });
+
+    return () => observers.forEach(obs => obs && obs.disconnect());
+  }, []);
 
   return (
     <section id="experience" style={{
