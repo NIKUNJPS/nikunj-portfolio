@@ -24,7 +24,6 @@ const Skills = () => {
     return () => observer.disconnect();
   }, [hasAnimated]);
 
-const Skills = () => {
   const skillsData = [
     {
       category: 'AI & Machine Learning',
@@ -96,7 +95,6 @@ const Skills = () => {
       zIndex: 1
     }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-        {/* Section Header with Intelligence Moment */}
         <div style={{ marginBottom: '60px' }}>
           <div 
             className="body-medium" 
@@ -122,7 +120,6 @@ const Skills = () => {
           </h2>
         </div>
 
-        {/* Capability Matrix with Focus Logic */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
@@ -170,7 +167,6 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Certifications */}
         <div style={{ marginTop: '100px' }}>
           <h3 className="heading-1" style={{ marginBottom: '40px', color: 'var(--brand-primary)' }}>
             Certifications & Achievements
