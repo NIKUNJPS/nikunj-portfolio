@@ -267,7 +267,7 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Footer */}
+        {/* Footer with Intelligence Moment */}
         <div style={{
           marginTop: '100px',
           paddingTop: '60px',
@@ -277,6 +277,9 @@ const Contact = () => {
           <p className="body-large" style={{ color: 'var(--text-secondary)', marginBottom: '24px' }}>
             "When someone visits, they should feel: <em style={{ color: 'var(--brand-primary)' }}>This person understands systems, not just code.</em>"
           </p>
+          <div className="body-small" style={{ color: 'var(--text-muted)', marginBottom: '12px', letterSpacing: '0.05em' }}>
+            END OF SIGNAL · REACH OUT TO CONTINUE
+          </div>
           <p className="body-small" style={{ color: 'var(--text-muted)' }}>
             © 2025 Nikunj Shah. Built with intelligence, not templates.
           </p>
@@ -287,6 +290,12 @@ const Contact = () => {
         @media (max-width: 1024px) {
           #contact > div > div:nth-child(2) {
             grid-template-columns: 1fr !important;
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
           }
         }
       `}</style>
